@@ -29,5 +29,19 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- file관련 url -->
+	<servlet>
+		<servlet-name>fileServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+		   <param-name>contextConfigLocation</param-name>
+	       <param-value>/WEB-INF/spring/appServlet/file-context.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fileServlet</servlet-name>
+		<url-pattern>*.fi</url-pattern>
+	</servlet-mapping>
 
 </web-app>
