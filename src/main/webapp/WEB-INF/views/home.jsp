@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
 <!DOCTYPE html>
 <html>
@@ -61,7 +62,15 @@
 				<td colspan="3">
 					<div class="content">
 						<input type="text" name="fileName" id="fileName" placeholder="확장자 입력(영소문자 및 숫자 조합만 가능)">
-						<input type="submit" value="+추가" id="addFile">
+						
+						<c:if test="${customCnt<=200 }">
+							<input type="submit" value="+추가" id="addFile">
+						</c:if>
+						
+						<!-- 200개가 넘으면 disable시킨다. -->
+						<c:if test="${customCnt>200 }">
+							<input type="submit" value="+추가" id="addFile" disabled>
+						</c:if>
 					</div>
 				</td>
 			</tr>
@@ -75,7 +84,7 @@
 							
 							<!-- 커스톰파일들을 저장하는 컨테이너 -->
 							<div class="blocked-files">
-								<c:if test="${customList !=null }">
+								<c:if test="${customList !=null}">
 									<c:forEach var="custom" items="${customList}">
 										<!-- 차단 파일 한개 -->
 										<div class="blocked-file">
